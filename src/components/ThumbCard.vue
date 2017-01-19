@@ -35,7 +35,7 @@ export default {
     },
     data () {
         return {
-        	title:'Bobby Smith',
+        	title:'Kelly Smith',
         	subtitle:'Bioligist, Cambridge MA',
         	date:'1 Jan 2016'
         }

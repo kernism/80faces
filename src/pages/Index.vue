@@ -1,5 +1,5 @@
 <template>
-
+    <section class="section">
         <div class="container">
             <div class="columns is-multiline">
                 <div class="column is-4" v-for="item in thumbs">
@@ -7,7 +7,7 @@
                 </div>
             </div>
         </div>
-
+    </section>
 </template>
 
 <script>
