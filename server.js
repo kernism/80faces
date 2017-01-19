@@ -22,5 +22,5 @@ app.use(express.static(path.join(__dirname, 'dist'))); //  "public" off of curre
 var port = process.env.PORT || 5000;
 app.listen(port);
 
-console.log(`Node Env: ${process.env.NODE_ENV}`.green);
-console.log(`server started on port: ${port}`.green);
+console.log(`Node Env: ${process.env.NODE_ENV}`);
+console.log(`server started on port: ${port}`);

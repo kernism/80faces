@@ -4,9 +4,13 @@
   "description": "A Vue.js project",
   "author": "kernism",
   "private": true,
-  "scripts": {
-    "dev": "node build/dev-server.js",
-    "build": "node build/build.js"
+   "scripts": {
+    "dev": "NODE_ENV=production node build/dev-server.js",
+    "build": "node build/build.js",
+    "lint": "eslint --ext .js,.vue src",
+    "start": "node server",
+    "prod-test": "NODE_ENV=production node server",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "animate.css": "^3.5.2",
