@@ -1,6 +1,17 @@
 <template>
     <section class="section">
         <div class="container">
+
+            <section class="hero is-white">
+            <div class="hero-body">
+            <div class="container has-text-centered">
+            <h1 class="title">
+            Celebrating community and human connection.
+            </h1>
+            </div>
+            </div>
+            </section>
+           
             <div class="columns is-multiline">
                 <div class="column is-4" v-for="item in thumbs">
                     <thumb-card></thumb-card>

@@ -1,11 +1,14 @@
 <template>
 	<section class="section">
+
+		<slide-show :show="showSlideShow" @close="closeSlideShow"></slide-show>
+
 		<div class="container">
 			
 			<div class="columns">
 				<div class="column is-8">
 					<div class="portrait">
-						<img src="http://placehold.it/700x800">
+						<img @click="openSlideShow" src="http://placehold.it/700x800">
 					</div>
 					<div class="thumbnails is-flex">
 						<figure class="image is-128x128">
@@ -31,24 +34,34 @@
 			</div>
 
 		</div>
+
 	</section>
 </template>
 
-
 <script>
+import SlideShow from "../components/SlideShow"
+
 export default {
     name: 'PortraitDetail',
     props: {},
     components: {
+    	SlideShow
     },
     methods: {
+    	openSlideShow(e) {
+    		this.showSlideShow = true;
+    	},
+    	closeSlideShow(e) {
+    		this.showSlideShow = false;
+    	}
     },
     data () {
         return {
         	title:'Bob Smith',
         	subtitle:'Bioligist, Cambridge MA',
         	date:'1 Jan 2016',
-        	description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean eu pulvinar magna. Ut tempor imperdiet augue ut euismod. Nunc ullamcorper, nunc aliquet finibus volutpat, erat est ullamcorper elit, non volutpat nibh dolor ut libero. Cras iaculis, turpis eu suscipit mollis, enim eros scelerisque lectus, id tempus lectus lorem tempor magna. '
+        	description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean eu pulvinar magna. Ut tempor imperdiet augue ut euismod. Nunc ullamcorper, nunc aliquet finibus volutpat, erat est ullamcorper elit, non volutpat nibh dolor ut libero. Cras iaculis, turpis eu suscipit mollis, enim eros scelerisque lectus, id tempus lectus lorem tempor magna. ',
+        	showSlideShow: false
         }
     },
     computed: {
