@@ -27,3 +27,29 @@ body {
 .animated {
     animation-duration: 300ms;
 }
+
+/* Text Animation slide right */
+
+.link-slideright {    
+    a {
+        position: relative;
+        z-index: 1;
+        text-decoration: none;
+        &:hover {
+            &:before {
+                width: 104%;
+            }
+        }
+        &:before {
+            transition: width 400ms; 
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: yellow;
+        }
+    }
+}

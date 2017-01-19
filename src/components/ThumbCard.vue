@@ -11,7 +11,7 @@
 			<div class="media-left"></div>
 
 			<div class="media-content">
-				<p class="title is-4">
+				<p class="title is-4 link-slideright">
                     <router-link :to="{path:'/details'}">{{title}}</router-link>
                 </p>
 				<p class="subtitle is-6">{{subtitle}}</p>
@@ -49,10 +49,9 @@ export default {
 
 <style scoped lang="scss">
 
+$scaleAmount: 1.1;
+
 .title a {
-    &:hover {
-        text-decoration: underline;
-    }
     color: black;
 }
 
@@ -62,7 +61,18 @@ export default {
     }
 
 .thumb-img {
-	border: 3px solid red;
+    overflow: hidden;
+    &:hover {
+        img {
+            transform: scale3d($scaleAmount, $scaleAmount, $scaleAmount);
+            opacity: 0.5;
+        }
+    }
+    background: black;
+	img {
+        opacity:1;
+        transition: all 1s;
+    }
 }
 
 </style>
