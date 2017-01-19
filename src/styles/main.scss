@@ -1,0 +1,32 @@
+$primary: #ff00ff;
+$family-primary: "Proxima Nova";
+
+@import '~bulma';
+
+body {
+    background: #ffffff;
+    color: #000000;
+    line-height: 1.6;
+    padding: 30px 75px 75px 75px;
+}
+
+.title {
+    color: #363636;
+    font-weight: 600;
+    line-height: 1.125;
+}
+
+.nav {
+    padding: 0px;
+    margin-top: -10px;
+    margin-bottom: 50px;
+}
+
+.nav-item {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.animated {
+    animation-duration: 300ms;
+}
