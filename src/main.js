@@ -6,14 +6,14 @@ Vue.use(VueRouter)
 
 // these are all our pages
 import Index from './pages/Index'
-import PortraitDetail from './pages/PortraitDetail'
+import Portrait from './pages/Portrait'
 import About from './pages/About'
 
 
 // these are all our routes specified by a path (url) and component (page)
 const routes = [
 	{path: '/', component: Index},
-	{path: '/details', component: PortraitDetail},
+	{path: '/details', component: Portrait},
 	{path: '/about', component: About}
 ]
 

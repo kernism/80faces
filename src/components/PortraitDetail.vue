@@ -1,10 +1,9 @@
 <template>
-	<section class="section">
-
-		<slide-show :show="showSlideShow" @close="closeSlideShow"></slide-show>
 
 		<div class="container">
 			
+			<slide-show :show="showSlideShow" @close="closeSlideShow"></slide-show>
+
 			<div class="columns">
 				<div class="column is-8">
 					<div class="portrait">
@@ -35,7 +34,6 @@
 
 		</div>
 
-	</section>
 </template>
 
 <script>
