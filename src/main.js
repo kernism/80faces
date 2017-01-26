@@ -49,10 +49,9 @@ const router = new VueRouter({routes: routes})
 
 function init() {
 	var p2 = new Promise((resolve) => {
-		var unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+		firebase.auth().onAuthStateChanged((user) => {
 			console.log(user);
 			store.commit('authenticated', Boolean(user !== null))
-			unsubscribe()
 			resolve()
 		})
 	})

@@ -37,6 +37,7 @@ export default {
     	signin() {
     		this.errorMessage = null
 			firebase.auth().signInWithEmailAndPassword(this.email, this.password).then((user) => {
+				this.$store.commit('authenticated', true)
 				this.$router.replace({path: '/'})
 			}).catch((err) => {
 				this.errorMessage = err.message
