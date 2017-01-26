@@ -1,12 +1,13 @@
 <template>
     <section class="section">
-        <portrait-detail></portrait-detail>
+        <portrait-detail v-if="portrait['.key']" :portrait="portrait"></portrait-detail>
     </section>
 </template>
 
 <script>
 
 import PortraitDetail from '../components/PortraitDetail'
+import DB from '../db'
 export default {
     name: 'Index',
     props: {},
@@ -17,12 +18,15 @@ export default {
     },
     data () {
         return {
-           thumbs: [0,1,2,3,4,5,6,7]
         }
     },
     computed: {
+        uid() {
+            return this.$route.params.id
+        }
     },
     created () {
+        this.$bindAsObject('portrait', DB.ref(`/portrait/${this.uid}`))
     }
 }
 </script>

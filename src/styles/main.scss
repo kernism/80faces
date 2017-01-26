@@ -1,5 +1,17 @@
-$primary: #ff00ff;
+$primary: #245555;
 $family-primary: "Proxima Nova";
+@import '~font-awesome/css/font-awesome.css';
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('~font-awesome/fonts/fontawesome-webfont.eot');
+    src: url('~font-awesome/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+        url('~font-awesome/fonts/fontawesome-webfont.woff') format('woff'),
+        url('~font-awesome/fonts/fontawesome-webfont.ttf') format('truetype'),
+        url('~font-awesome/fonts/fontawesome-webfont.svg') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
 
 @import '~bulma';
 

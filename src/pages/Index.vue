@@ -5,25 +5,25 @@
         <button class="button" @click="toggle">Toggle</button>
 
             <section class="hero is-white">
-            <div class="hero-body">
-            <div class="container has-text-centered">
-            <h1 class="title">
-            Celebrating community and human connection.
-            </h1>
-            </div>
-            </div>
+                <div class="hero-body">
+                    <div class="container has-text-centered">
+                        <h1 class="title">
+                            Celebrating community and human connection.
+                        </h1>
+                    </div>
+                </div>
             </section>
            
             <div class="columns is-multiline">
                 
                 <!-- this is the portrait layout -->
-                <div class="column" v-if="layout===true" v-for="item in thumbs">
-                    <portrait-detail></portrait-detail>
+                <div class="column" v-if="layout===true" v-for="portrait in portraits">
+                    <portrait-detail :portrait="portrait"></portrait-detail>
                 </div>
                 
                 <!-- this is the card layout -->
-                <div class="column is-4" v-if="layout===false" v-for="item in thumbs">
-                    <thumb-card></thumb-card>
+                <div class="column is-4" v-if="layout===false" v-for="portrait in portraits">
+                    <thumb-card :portrait="portrait"></thumb-card>
                 </div>
             </div>
         </div>
@@ -34,6 +34,7 @@
 
 import PortraitDetail from '../components/PortraitDetail'
 import ThumbCard from '../components/ThumbCard'
+import DB from '../db'
 export default {
     name: 'Index',
     props: {},
@@ -45,17 +46,16 @@ export default {
         toggle() {
             this.layout = !this.layout
         }
-
     },
     data () {
         return {
-           thumbs: [0,1,2,3,4,5,6,7],
            layout: false
         }
     },
     computed: {
     },
     created () {
+        this.$bindAsArray('portraits', DB.ref('/portrait'))
     }
 }
 </script>

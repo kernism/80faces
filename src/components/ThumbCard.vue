@@ -1,8 +1,8 @@
 <template>
-<div class="thumb-card">
+<div class="thumb-card" v-if="isLoaded">
 	
 	<figure class="thumb-img image">
-		<img src="../assets/portrait_001.png">
+		<img :src="`${heroImage.serving_url}=s900`">
 	</figure>
 
 	<div class="thumb-content">
@@ -12,10 +12,10 @@
 
 			<div class="media-content">
 				<p class="title is-4 link-slideright">
-                    <router-link :to="{path:'/details'}">{{title}}</router-link>
+                    <router-link :to="{path:`/details/${uid}`}">{{portrait.title}}</router-link>
                 </p>
-				<p class="subtitle is-6">{{subtitle}}</p>
-				<small>{{date}}</small>
+				<p class="subtitle is-6">{{portrait.subtitle}}</p>
+				<small>{{portrait.created_at}}</small>
 			</div>
 			
 		</div>
@@ -26,9 +26,14 @@
 </template>
 
 <script>
+import DB from '../db'
 export default {
     name: 'ThumbCard',
-    props: {},
+    props: {
+        portrait: {
+            required: true
+        }
+    },
     components: {
     },
     methods: {
@@ -41,8 +46,18 @@ export default {
         }
     },
     computed: {
+        heroImage() {
+            return (this.assets && this.assets.length) ? this.assets[0] : null
+        },
+        isLoaded() {
+            return this.portrait['.key'] && this.assets.length
+        },
+        uid() {
+            return this.portrait['.key']
+        }
     },
     created () {
+        this.$bindAsArray('assets', DB.assetsForPortraitRef(this.portrait['.key']))
     }
 }
 </script>
