@@ -18,7 +18,7 @@
 				<div class="control assets" v-if="assets">
 					<figure v-for="asset in assets">
 						<img :src="`${asset.serving_url}=s120`" alt=""></img>
-                        <a @click.prevent="deleteAsset(asset)" class="delete-asset" href="#delete">
+                        <a @click.prevent="deleteAsset(asset)" class="asset-action" href="#delete">
                             <i class="fa fa-trash"></i>
                         </a>
 					</figure>
@@ -30,12 +30,19 @@
 				</div>
 
 				<label class="label">Sub title</label>
+                <div class="control">
+                    <input class="input" type="text" name="subtitle" v-model="portrait.subtitle" placeholder="Sub title">
+                </div>
+
+                <label class="label">Description</label>
 				<div class="control">
-					<input class="input" type="text" name="subtitle" v-model="portrait.subtitle" placeholder="Sub title">
+					<textarea class="textarea" v-model="portrait.description" name="description" placeholder="Description about this portrait"></textarea>
 				</div>
 
 				<div class="control">
-					<button class="button is-primary" :class="{'is-loading': isUploading}" :disabled="!portrait.title || isUploading">Save</button>
+                    <button class="button is-primary" :class="{'is-loading': isUploading}" :disabled="!portrait.title || isUploading">Save</button>
+                    <!-- <button class="button is-danger" :class="{'is-loading': isUploading}">Delete</button> -->
+                    <router-link class="button" :to="{path: `/details/${uid}`}">View</router-link>
 				</div>
 			</form>
 		</div>
@@ -113,7 +120,8 @@ export default {
             return new Promise((resolve, reject) => {
             	var payload = {
 					title: this.parseVal(this.portrait.title),
-					subtitle: this.parseVal(this.portrait.subtitle),
+                    subtitle: this.parseVal(this.portrait.subtitle),
+					description: this.parseVal(this.portrait.description)
     			}
 				if (!this.portrait.created_at) {
 					payload['created_at'] = this.firebaseTimestamp()
@@ -180,7 +188,8 @@ export default {
     		if (val['.value'] === null) {
     			this.$delete(this.portrait, '.value')
     			this.$set(this.portrait, 'title', null)
-    			this.$set(this.portrait, 'subtitle', null)
+                this.$set(this.portrait, 'subtitle', null)
+    			this.$set(this.portrait, 'description', null)
     		}
     	}
     },
@@ -208,32 +217,8 @@ export default {
 	display: flex;
 	flex-wrap: wrap;
 	figure {
-        position: relative;
 		margin-right: 10px;
-		&:hover {
-			opacity: 0.8;
-            .delete-asset {
-                opacity: 1;
-            }
-		}
 	}
-    .delete-asset {
-        position: absolute;
-        background: rgba(0, 0, 0, 0.5);
-        width: 35px; 
-        height: 35px;
-        border-radius: 50%;
-        top: 8px;
-        left: 8px;
-        opacity: 0;
-        i {
-            height: 100%;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    }
 }
 .file-button {
 	position: relative;

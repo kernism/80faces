@@ -6,9 +6,15 @@ import firebase from 'firebase'
 import store from './store'
 import mixins from './mixins'
 import DB from './db'
+import filters from './filters'
 
 Vue.use(Vuefire)
 Vue.use(VueRouter)
+
+// filters
+Object.keys(filters).forEach((name) => {
+	Vue.filter(name, filters[name]);
+})
 
 // mixins
 Vue.mixin(mixins)

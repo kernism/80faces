@@ -5,6 +5,9 @@
                 <router-link class="nav-item" :to="{ path: '/' }">
                     <img src="../assets/logo.svg" alt="80faces logo">
                 </router-link>
+                <div class="nav-item">
+                    <button class="button" @click="toggleView">{{$store.state.layout==='index'? 'Index Layout' : 'Grid Layout'}}</button>
+                </div>
             </div>
 
             <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
@@ -33,6 +36,13 @@ export default {
     components: {
     },
     methods: {
+        toggleView() {
+            if (this.$store.state.layout === 'index') {
+                this.$store.commit('layout', 'grid')
+            } else {
+                this.$store.commit('layout', 'index')
+            }
+        }
     },
     data () {
         return {

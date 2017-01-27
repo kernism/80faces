@@ -3,23 +3,21 @@
 	
 	<figure class="thumb-img image">
 		<img :src="`${heroImage.serving_url}=s900`">
+        <router-link :to="{path: `/create/${uid}`}" class="asset-action">
+            <i class="fa fa-pencil"></i>
+        </router-link>
 	</figure>
 
 	<div class="thumb-content">
 		<div class="media">
-			
-			<div class="media-left"></div>
-
 			<div class="media-content">
 				<p class="title is-4 link-slideright">
                     <router-link :to="{path:`/details/${uid}`}">{{portrait.title}}</router-link>
                 </p>
 				<p class="subtitle is-6">{{portrait.subtitle}}</p>
-				<small>{{portrait.created_at}}</small>
+				<small>{{portrait.created_at | fromnow}}</small>
 			</div>
-			
 		</div>
-
 	</div>
 		
 </div>
@@ -71,9 +69,8 @@ $scaleAmount: 1.1;
 }
 
 .thumb-content {
-    margin-left: -30px;
-    padding: 20px;
-    }
+    margin-top: 10px;
+}
 
 .thumb-img {
     overflow: hidden;

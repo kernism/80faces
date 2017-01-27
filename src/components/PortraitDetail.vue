@@ -17,7 +17,7 @@
 					<p class="title is-4">{{portrait.title}}</p>
 					<p class="subtitle is-6">{{portrait.subtitle}}</p>
 					<p class="content">{{portrait.description}}</p>
-					<small>{{portrait.created_at}}</small>
+					<small>{{portrait.created_at | fromnow}}</small>
 					<br>
 					<router-link v-if="authenticated" class="button" :to="{path: `/create/${uid}`}">
 						<span class="icon">

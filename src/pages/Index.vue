@@ -2,8 +2,6 @@
     <section class="section">
         <div class="container">
 
-        <button class="button" @click="toggle">Toggle</button>
-
             <section class="hero is-white">
                 <div class="hero-body">
                     <div class="container has-text-centered">
@@ -15,14 +13,13 @@
             </section>
            
             <div class="columns is-multiline">
-                
                 <!-- this is the portrait layout -->
-                <div class="column" v-if="layout===true" v-for="portrait in portraits">
+                <div class="column" v-if="$store.state.layout==='index'" v-for="portrait in portraits">
                     <portrait-detail :portrait="portrait"></portrait-detail>
                 </div>
                 
                 <!-- this is the card layout -->
-                <div class="column is-4" v-if="layout===false" v-for="portrait in portraits">
+                <div class="column is-4" v-if="$store.state.layout==='grid'" v-for="portrait in portraits">
                     <thumb-card :portrait="portrait"></thumb-card>
                 </div>
             </div>
@@ -43,13 +40,9 @@ export default {
         PortraitDetail
     },
     methods: {
-        toggle() {
-            this.layout = !this.layout
-        }
     },
     data () {
         return {
-           layout: false
         }
     },
     computed: {

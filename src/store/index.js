@@ -5,12 +5,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        authenticated: false
+        authenticated: false,
+        layout: 'grid',
     },
 
     mutations: {
         authenticated (state, payload) {
             state.authenticated = payload;
+        },
+        layout (state, payload) {
+            state.layout = payload;
         }
     }
 });
