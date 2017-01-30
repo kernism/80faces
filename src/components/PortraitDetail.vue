@@ -1,12 +1,12 @@
 <template>
 	
-		<div class="container" v-if="isLoaded">
+		<div class="container portrait-details" v-if="isLoaded">
 			<slide-show :show="showSlideShow" @close="closeSlideShow"></slide-show>
 			<div class="columns">
 				<div class="column is-8">
-					<div class="portrait">
-						<img @click="openSlideShow" :src="`${selectedImage.serving_url}`">
-					</div>
+					<figure class="portrait image">
+						<img @click="openSlideShow" :src="`${selectedImage.serving_url}=s740`">
+					</figure>
 					<div class="thumbnails is-flex">
 						<figure class="image is-128x128" v-for="(asset, index) in assets">
 							<img @click="showImageAtIndex(index)" :src="`${asset.serving_url}=s128`">
@@ -81,6 +81,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.portrait-details {
+	margin-bottom: 60px;
+}
+
 
 .portrait {
 	position: relative;

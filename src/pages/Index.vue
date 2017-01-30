@@ -14,7 +14,7 @@
            
             <div class="columns is-multiline">
                 <!-- this is the portrait layout -->
-                <div class="column" v-if="$store.state.layout==='index'" v-for="portrait in portraits">
+                <div class="column is-12" v-if="$store.state.layout==='index'" v-for="portrait in portraits">
                     <portrait-detail :portrait="portrait"></portrait-detail>
                 </div>
                 
