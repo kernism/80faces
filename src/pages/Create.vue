@@ -41,8 +41,8 @@
 
 				<div class="control">
                     <button class="button is-primary" :class="{'is-loading': isUploading}" :disabled="!portrait.title || isUploading">Save</button>
-                    <!-- <button class="button is-danger" :class="{'is-loading': isUploading}">Delete</button> -->
-                    <router-link class="button" :to="{path: `/details/${uid}`}">View</router-link>
+                    <router-link class="button" :to="{path: `/details/${uid}`}" :disabled="isUploading">View</router-link>
+                    <button class="button is-danger pull-right" :class="{'is-loading': isUploading}" :disabled="isUploading" @click="deleteAsset">Delete</button>
 				</div>
 			</form>
 		</div>
@@ -59,9 +59,25 @@ export default {
     },
     methods: {
         deleteAsset(asset) {
-            var p1 = this.storageRef.child(asset.path).delete()
-            var p2 = this.$firebaseRefs.assets.child(asset['.key']).remove()
-            return Promise.all([p1, p2])
+            if (confirm('Are you sure')) {
+                return new Promise((resolve, reject) => {
+                    var queue = []
+                    for (var i in this.assets) {
+                        queue.push((() => {
+                            var asset = this.assets[i]
+                            var p1 = this.storageRef.child(asset.path).delete()
+                            var p2 = DB.ref(`assets/`).child(asset['.key']).remove()
+                            return Promise.all([p1, p2])
+                        })())
+                    }
+
+                    Promise.all(queue).then(() => {
+                        DB.ref('portrait/').child(this.uid).remove().then(() => {
+                            this.$router.replace({path: '/'})
+                        })
+                    })
+                })
+            }
         },
     	handlePhoto(e) {
             this.errorMessage = null;

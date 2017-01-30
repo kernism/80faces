@@ -1,4 +1,4 @@
-var env = process.env.NODE_ENV; // 'production'
+var env =  'production'
 import firebase from 'firebase'
 console.log('ENV: '+env);
 var config = {

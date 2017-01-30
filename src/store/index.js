@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         authenticated: false,
-        layout: 'grid',
+        layout: 'index',
     },
 
     mutations: {

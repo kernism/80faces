@@ -32,6 +32,15 @@ const routes = [
 	{path: '/details/:id', component: Portrait},
 	{path: '/about', component: About},
 	{path: '/login', component: Login},
+	{
+		path: '/logout',
+		component: Index,
+		beforeEnter: (to, from, next) => {
+			firebase.auth().signOut().then(() => {
+				document.location = '/'
+			})
+		}
+	},
 	{path: '/create/:id', component: Create, beforeEnter: (to, from, next) => {
 		if (!store.state.authenticated) {
 			next({path: '/login'})

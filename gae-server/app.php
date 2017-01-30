@@ -25,7 +25,7 @@ $app->get('/', function () use ($app) {
     if ($_GET['delete']) {
         CloudStorageTools::deleteImageServingUrl($image_file);
     }
-    $image_url = CloudStorageTools::getImageServingUrl($image_file);
+    $image_url = CloudStorageTools::getImageServingUrl($image_file, ['secure_url' => true]);
     return $app->redirect($image_url);
 });
 
