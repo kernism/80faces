@@ -1,5 +1,6 @@
 var env = process.env.NODE_ENV; // 'production'
 import firebase from 'firebase'
+console.log('ENV: '+env);
 var config = {
 	apiKey: 'AIzaSyA19klo_ZISiIYZirh238WPozFrGn2Z7xw',
 	authDomain: 'faces-97af0.firebaseapp.com',
